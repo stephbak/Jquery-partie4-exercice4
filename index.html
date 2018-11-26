@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="jquery-3.2.1.js"></script>
+  <title>Jquery partie 4</title>
+</head>
+<body>
+  <label>Nom : </label><input type="text" name="lastName" placeholder="Nom" id="lastName" />
+  <label>Prénom : </label><input type="text" name="firstName" placeholder="Prénom" id="firstName" />
+  <label>Date de naissance : </label><input min="1900-01-01" max="" type="date" name="birthDate" placeholder="jj/mm/aaaa" id="birthDate" />
+  <label>Lieu de naissance : </label><input type="text" name="placeOfBirth" placeholder="Lieu de naissance" id="placeOfBirth" />
+  <label>Emploi : </label><input type="text" name="employment" placeholder="Emploi" id="employment" />
+  <label>Société : </label><input type="text" name="society" placeholder="Société" id="society" />
+  <div><button type="button" name="button">Générer</button></div>
+  <div id="result"></div>
+  <script>
+  $(function(){
+    $('button').click(function(){
+      var lastName = $('#lastName').val();
+      var firstName = $('#firstName').val();
+      var birthDate = $('#birthDate').val();
+      var placeOfBirth = $('#placeOfBirth').val();
+      var employment = $('#employment').val();
+      var society = $('#society').val();
+      var regexText = /^[a-zA-Z -]+$/;
+      if((regexText.test(lastName)==true) && (regexText.test(firstName)==true) && (regexText.test(placeOfBirth)==true)){
+        var result = lastName + ' ' + firstName + ', né le ' + birthDate + ', '+ placeOfBirth + ', actuellement ' + employment + ' à ' + society + '.';
+        $('#result').append(result);//.append permet de renvoyer le resultat directement sur la page dans une div
+      }
+    });
+  });
+</script>
+</body>
+</html>
